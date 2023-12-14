@@ -1,5 +1,6 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO.Compression;
+
 
 namespace Banco
 {
@@ -14,10 +15,10 @@ namespace Banco
     public double Saldo {get; set;}
     public double Deposito {get; set;}
     public double Saque {get; set;}
-    public double Emprestimo {get; set;}
     public double SaldoTotal {get; set;}
     
     public abstract void ReceberDados();
+
 
     }
     public class Cadastro: CadastroAbs
@@ -28,7 +29,6 @@ namespace Banco
       
      public override void ReceberDados()
      {
-         SaldoTotal += Saldo + Emprestimo + Deposito - Saque;
         Console.Clear();
         Console.WriteLine("***********************");
         Console.WriteLine("Banco da China");
@@ -38,7 +38,8 @@ namespace Banco
         Console.Write("Digite seu nome: ");
         Nome = Console.ReadLine();
          do {
-        Console.Write("Digite seu CPF: ");
+        Console.Write("Digite seu CPF [Sem pontuação, ex.12345678912]: ");
+        
         Cpf = Console.ReadLine();
         if (Cpf.Length != 11)
         {
@@ -48,8 +49,19 @@ namespace Banco
             x = true;
         }
           } while(x == false);
+          Console.WriteLine();
+       do{
         Console.WriteLine("Digite sua data de nascimento [Sem barras, ex.01072005]: ");
         DataNasc = Console.ReadLine();
+        if (DataNasc.Length != 8)
+        {
+            Console.WriteLine("Data de Nascimento Inválida");
+        }else
+        {
+            z = true;
+        }
+       }while(z == false);
+        Console.WriteLine();
          Console.WriteLine("Digite a senha que deseja: ");
         Senha = Console.ReadLine();
        
@@ -86,6 +98,8 @@ namespace Banco
         if (Nome1 != Nome)
         {
              Console.WriteLine("Usuário Inexistente");
+             introducao();
+
              break;
         } else
         {
@@ -102,7 +116,30 @@ namespace Banco
             y = true;
         }
         } while (y == false );
+         retorno();   
+
+        break;
+
+
+            case 2:
+            Console.Clear();
+            Console.WriteLine("Programa finalizado");
+            break;
+
+
+            default:
+            Console.Clear();
+            Console.WriteLine("Opcão inválida");
             
+            break;
+        }
+        
+
+
+        
+     }
+     public void retorno()
+     {
         Console.Clear();
         Console.WriteLine("***********************");
         Console.WriteLine("Banco da China");
@@ -124,7 +161,6 @@ namespace Banco
         Console.WriteLine();
         Console.Write("Sua escolha: ");
         escolha2 = Convert.ToDouble(Console.ReadLine());
-
         switch (escolha2)
         {
             case 1: 
@@ -142,15 +178,22 @@ namespace Banco
         Console.WriteLine("Seu Saldo: R$"+SaldoTotal);
         Console.WriteLine("------------------");
 
+
             Console.Write("Digite o valor do depósito: R$");
             Deposito = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Depósito realizado com sucesso!!!");
+            Console.WriteLine("Aperte enter para retornar");
+            Console.ReadLine();
+            SaldoTotal += Deposito;
+            Console.Clear();
+            retorno();
         
     
             break;
 
+
             case 2: 
-            Console.Clear();
+        Console.Clear();
         Console.WriteLine("***********************");
         Console.WriteLine("Banco da China");
         Console.WriteLine("***********************");
@@ -164,49 +207,45 @@ namespace Banco
         Console.WriteLine("Seu Saldo: R$"+SaldoTotal);
         Console.WriteLine("------------------");
 
+
             Console.Write("Digite o valor do Saque: R$");
             Saque = Convert.ToDouble(Console.ReadLine());
             if (Saque > SaldoTotal)
             {
                 Console.WriteLine("Saque não pode ser realizado");
+                Console.WriteLine("Aperte enter para retornar");
+                Console.ReadLine();
             }else
             {
                 Console.WriteLine("Saque realizado com sucesso!!!");
+                Console.WriteLine("Aperte enter para retornar");
+                Console.ReadLine();
+                 SaldoTotal -= Saque;
     
             }
+            retorno();
              break;
+
 
             case 3:Console.Clear();
             Console.WriteLine("Programa finalizado");
             break;
 
-            default: Console.Clear();
-            Console.WriteLine("Opcão inválida");
-            break;
-        }
-
-        break;
-
-            case 2:
-            Console.Clear();
-            Console.WriteLine("Programa finalizado");
-            break;
-
 
             default:
-            Console.Clear();
+
             Console.WriteLine("Opcão inválida");
-            
+            retorno();
             break;
         }
-        
 
-        
      }
-     public void intoducao()
+     public void introducao()
      {
+        
         do 
         { 
+        Console.Clear();
         Console.WriteLine("***********************");
         Console.WriteLine("Banco da China");
         Console.WriteLine("***********************");
@@ -227,11 +266,13 @@ namespace Banco
         cadastro2.ReceberDados();
         break;
 
+
             case 2:
             Console.Clear();
              Cadastro cadastro3 = new Cadastro();
         cadastro3.Entrar();
         break;
+
 
             case 3:
             Console.Clear();
@@ -262,7 +303,10 @@ namespace Banco
         Nome1 = Console.ReadLine();
         if (Nome != Nome1)
         {
-             Console.Write("Usuário Inexistente");
+             Console.WriteLine("Usuário Inexistente");
+             Console.WriteLine("Aperte enter para retornar");
+             Console.ReadLine();
+             introducao();
         }
      }
     
@@ -272,7 +316,7 @@ namespace Banco
     {
     
      Cadastro cadastro1 = new Cadastro();
-        cadastro1.intoducao();
+        cadastro1.introducao();
      
     }
   }
