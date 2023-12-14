@@ -14,151 +14,53 @@ Todo o projeto foi desenvolvimento em C#
 
 ## Sobre o Código
 
-### Classe Abstrata: Corpo
+### Classe Abstrata: CadastroAbs
 
-A classe Corpo é declarado como classe abstrata por isso não pode ser instanciada diretamente,essa classe só serve como base para outras classes.
+A classe CadastroAbs é declarado como classe abstrata por isso não pode ser instanciada diretamente,essa classe só serve como base para outras classes.
 
 #### Atributos: 
 
-nome(string) - e utilizado para armazenar o nome do defunto.
+nome (string) - é utilizado para armazenar o nome do usuário.
 
-idade(Double) - e utilizado para armazenar a idade do defunto.
+Cpf (string) - é utilizado para armazenar o cpf do usuário.
 
-Dnasci(string) - e utilizado para armazenar a data de nascimento do defunto.
+DataNasc (string) - é utilizado para armazenar a data de nascimento do usuário.
 
-Dfaleci(string) - e utilizado para armazenar a data de falecimento do defunto.
+Senha (string) - é utilizado para armazenar a senha do usuário.
 
-gênero(string) - e utilizado para armazenar o gênero do defunto.
+escolha(double) - é utilizado para o usuário escolher entre o login ou finalizar o programa.
 
-testo(string) - e utilizado para armazenar o texto que a pessoa vai querer colocar na lápide.
+escolha2(double) - é utilizado para o usuário escolher entre o saque ou depósito.
 
-conf(string) - e utilizado para armazenar a confirmação de informação.
+Saldo (double) - é utilizado para visualizar o saldo do usuário.
 
-dia(string) - e utilizado para armazenar o dia tanto de Dnasci como também de Dfaleci.
+Deposito (double) - é utilizado para o usuário acrescentar valores ao seu saldo.
 
-mes(string) - e utilizado para armazenar o mês tanto de Dnasci como também de Dfaleci.
+Saque (double) - é utilizado para o usuário saquar valores do seu saldo.
 
-ano(string) - e utilizado para armazenar o ano tanto de Dnasci como também de Dfaleci.
-
-#### Métodos:
-
-laudo(abstract) - método abstrato que deve ser usado por classes derivadas,serve para mostrar as informaçoes do corpo para confirmação.
-
-lapide(abstract) - metodo abstrato que deve ser utilizado por classes derivadas,serve para gerar um molde de como será a lápide.
-
-lapidect(abstract) - método abstrato que deve ser ulilezado por classes derivadas,serve para gerar uma prévia dé como será a lápide com o texto escrito.
-
-execucao1(abstract) - método abstrato que deve ser usado por classes derivadas,e um método utilizado para a execução da 1° parte do programa.
-
-### Classe: Mulher (Herda de corpo)
-
-A classe Mulher herda todos os atributos e métodos da classe abstrata corpo.
+SaldoTotal (double) - é utilizado para visualizar o valor total do saldo do usuário.
 
 #### Métodos:
 
-laudo(override) - Método sobrescrito da classe base corpo,ele serve para mostrar na tela todas as informações sobre o corpo para confirmação destes dados.
+ReceberDados(abstract) - método abstrato que deve ser usado por classes derivadas,serve para mostrar as informaçoes do CadastroAbs para confirmação.
 
-lapide(override) - método sobrescrito da classe base corpo,ele serve para mostrar na tela uma prévia de como irá ficar a lápide.
+### Classe: Cadastro (Herda de CadastroAbs)
 
-lapide(override) - método sobrescrito da classe base corpo,ele serve para mostrar na tela uma prévia de como irá ficar a lápide com o texto escrito pelo cliente.
-
-execucao1(override) - método sobrescrito da classe base corpo,ele faz toda a execução da parte do programa relacionada a classe Mulher.
-
-### Classe: Homem (Herda de corpo)
-
-A classe Homem herda todos os atributos e métodos da classe abstrata corpo.
+A classe Cadastro herda todos os atributos e métodos da classe abstrata CadastroAbs.
 
 #### Métodos:
 
-laudo(override) - Método sobrescrito da classe base corpo,ele serve para mostrar na tela todas as informações sobre o corpo para confirmação destes dados.
+ReceberDados(override) - Método sobrescrito da classe base CadastroAbs, ele serve para mostrar na tela todas as informações sobre o cadastro para confirmação destes dados.
 
-lapide(override) - método sobrescrito da classe base corpo,ele serve para mostrar na tela uma prévia de como irá ficar a lápide.
+introducao() - método escrito da classe cadastro, ele serve para mostrar na tela o menu inicial.
 
-lapide(override) - método sobrescrito da classe base corpo,ele serve para mostrar na tela uma prévia de como irá ficar a lápide com o texto escrito pelo cliente.
+Entrar() - método escrito da classe cadastro, ele serve para acessar o programa, caso o usuário não tenha efetuado o cadastro ele retornará para a tela inicial de cadastro.
 
-execucao1(override) - método sobrescrito da classe base corpo,ele faz toda a execução da parte do programa relacionada a classe Homem.
-
-### Classe: Caixao 
-
-#### Atributos:
-
-tmadeira(string) - e utilizado para armazenar o tipo de madeira escolhido pelo cliente.
-
-vtmadeira(Double) - e utilizado para armazenar o valor do tipo de madeira escolhido pelo cliente.
-
-estilo(string) - e utilizado para armazenar o estilo de caixão escolhido pelo cliente.
-
-vestido(Double) - e utilizado para armazenar o valor do estilo de caixão escolhido pelo cliente.
-
-cor(string) - e utilizado para armazenar a cor do caixão escolhido pelo cliente.
-
-vcor(Double) - e utilizado para armazenar o valor da cor escolhida pelo cliente.
-
-maquiagem(string) - e utilizado para armazenar a escolha do cliente no uso ou não de maquiagem no corpo.
-
-vmaquiagem(Double) - e utilizado para armazenar o valor da maquiagem.
-
-vlapide(Double) - e utilizado para armazenar o valor da lápide.
-
-total(Double) - e utilizado para armazenar a soma de todos os valor que o cliente escolheu.
-
-troco(Double) - e utilizado para armazenar o troco do cliente se necessário.
-
-pagamento(Double) - e utilizado para armazenar o valor que o cliente estará pagando.
-
-opcaoPagamento(Double) - e utilizado para armazenar a opção de pagamento escolhida pelo cliente.
-
-teste(Double) - e utilizado para uma estrutura de reptiçao condicional de pagar.
-
-opcao(string) - e utilizado para armazenar a escolha do cliente e é utilizado em uma estrutura de escolha em exercicio1.
-
-conf(string) - e utilizado para armazenar a confirmação das informações.
-
-#### Métodos:
-
-execucao1() - e utilizado para executar toda a parte de escolhas com relação ao caixão.
-
-execucao2() - e utilizado para executar toda a parte de escolha referente a maquiagem.
-
-execucao3() - e utilizado para fazer a confirmação dos dados que o cliente tem a pagar.
-
-coninf() - e utilizado para fazer a confirmação dos dados do caixão.
-
-vapagar() - e utilizado para fazer o cálculo e guardar as informações dos valores que o cliente tem a pagar.
-
-pagar() - e utilizado para exercitar toda a parte de pagamento do cliente.
-
-### Classe: local
-
-#### Atributos:
-
-hospi(string) - e utilizado para armazenar o hospital onde está localizado o corpo.
-
-lsepul(string) - e utilizado para armazenar o local onde será realizado o sepultamento.
-
-data(string) - e utilizado para armazenar a data do sepultamento.
-
-hora(string) - e utilizado para armazenar a hora do sepultamento.
-
-dia(string) - e utilizado para armazenar o dia de data.
-
-mes(string) - e utilizado para armazenar o mês de data.
-
-ano(string) - e utilizado para armazenar o ano de data.
-
-ht(string) - e utilizado para armazenar as horas de hora.
-
-mt(string) - e utilizado para armazenar os minutos de hora.
-
-#### Métodos:
-
-conflocal() - e utilizado para fazer a confirmação de dados de local.
-
-inflocal() - e utilizado para executar toda a parte de local.
+retorno() - método escrito da classe cadastro, ele direciona o usuário para a opção de depósito e/ou saque.
 
 ## Requisitos Funcionais 
 
-Requisitos funcionais são especificações detalhadas das funcionalidades que um sistema ou software deve oferecer. Eles descrevem as ações específicas que o sistema deve executar em resposta a entradas específicas do usuário ou de outros sistemas. Esses requisitos definem o que o sistema deve fazer para atender às necessidades e expectativas dos usuários.
+Requisitos funcionais, são especificações detalhadas das funcionalidades que um sistema ou software deve oferecer. Eles descrevem as ações específicas que o sistema deve executar em resposta a entradas específicas do usuário ou de outros sistemas. Esses requisitos definem o que o sistema deve fazer para atender às necessidades e expectativas dos usuários.
 
 <table>
 <tr>
@@ -173,21 +75,16 @@ Requisitos funcionais são especificações detalhadas das funcionalidades que u
 </tr>
 <tr>
 <td>RF02</td>
-<td>Escolha do Gênero</td>
-<td>O usuário pode escolher o gênero da pessoa falecida (Masculino ou Feminino)</td>
+<td>Login</td>
+<td>O usuário precisa fazer o login para ter acesso ao sistema</td>
 </tr>
 <tr>
 <td>RF03</td>
-<td>Escolha do Tipo de Caixão</td>
-<td>O sistema oferece opções para o usuário escolher o tipo de madeira, estilo e cor do caixão</td>
+<td>Escolha de Serviços</td>
+<td>O usuário pode optar por serviços, como depósito e saque</td>
 </tr>
 <tr>
 <td>RF04</td>
-<td>Escolha de Serviços Adicionais</td>
-<td>O usuário pode optar por serviços adicionais, como maquiagem no defunto</td>
-</tr>
-<tr>
-<td>RF05</td>
 <td>Confirmação de Informações</td>
 <td>O sistema exibe as informações inseridas e solicita confirmação do usuário</td>
 </tr>
@@ -195,7 +92,7 @@ Requisitos funcionais são especificações detalhadas das funcionalidades que u
 
 ## Requisitos Não Funcionais
 
-Requisitos não funcionais referem-se a características do sistema que não estão relacionadas diretamente às funcionalidades específicas, mas sim a atributos que impactam seu desempenho, usabilidade, segurança, entre outros. Exemplos incluem requisitos de desempenho, como tempo de resposta, requisitos de segurança, como controle de acesso, e requisitos de usabilidade, como a interface do usuário. Esses requisitos abordam aspectos globais do sistema, garantindo que ele atenda a critérios além das funcionalidades específicas.
+Requisitos não funcionais referem-se à características do sistema que não estão relacionadas diretamente às funcionalidades específicas, mas sim a atributos que impactam seu desempenho, usabilidade, segurança, entre outros. Exemplos incluem requisitos de desempenho, como tempo de resposta, requisitos de segurança, como controle de acesso, e requisitos de usabilidade, como a interface do usuário. Esses requisitos abordam aspectos globais do sistema, garantindo que ele atenda a critérios além das funcionalidades específicas.
 
 <table>
 <tr>
